@@ -50,64 +50,87 @@ function randomNumber(num1, num2){
 // inizializzo la variabile bombe, in questa posizione così da renderla una variabile globale
 var bombe = [];
 
+
+// variabile che fa terminare la partita.
+var userIsPlaying = true;
+
+
+
+
 // 1. creo un evento click per il buttone play così da inizializzare il gioco.
 
 btnPlay = document.getElementById("play");
 
+var btnPressed = true;
+
 btnPlay.addEventListener("click",
-    function(){
-        
-        // in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle.
-        var id ="game-container";
-        
-        // 1.2 verifico l'input utente sulla select per generare una griglia
+function(){
 
         var selection=document.getElementById("difficulty").value;
         
-        if(selection=="base"){
-        
-            numeroUtente = 100;
-        
-        }else if(selection=="medium"){
-        
-            numeroUtente = 80;
-        
-        }else{
-        
-            numeroUtente = 50;
-        
-        }
-        
-        //1.3 Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
-        //1.4 I numeri non possono essere duplicati.
-        for(var i=0; i<16;i++){
-        
-            var random = randomNumber(1, numeroUtente);
+
+
+        if(selection!="" && btnPressed){
             
-        
-            //    se il numero random, non è incluso nell'array, pusha il numero dentro l'array.
-        
-            if(!bombe.includes(random)){
-        
-                bombe.push(random);
-        
+            // in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle.
+            var id ="game-container";
+            
+            // 1.2 verifico l'input utente sulla select per generare una griglia
+    
+            
+            
+            if(selection=="base"){
+            
+                numeroUtente = 100;
+            
+            }else if(selection=="medium"){
+            
+                numeroUtente = 80;
+            
             }else{
-        
-                i--;
-        
+            
+                numeroUtente = 50;
+            
             }
-        
-        
+            
+            //1.3 Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
+            //1.4 I numeri non possono essere duplicati.
+            for(var i=0; i<16;i++){
+            
+                var random = randomNumber(1, numeroUtente);
+                
+            
+                //    se il numero random, non è incluso nell'array, pusha il numero dentro l'array.
+            
+                if(!bombe.includes(random)){
+            
+                    bombe.push(random);
+            
+                }else{
+            
+                    i--;
+            
+                }
+            
+            
+            }
+            
+            
+            
+            console.log("La posizione delle bombe è:" + bombe);
+            
+            
+            // funzione che genera le celle in un contenitore specificato nell'argomento.
+            makePlayground(numeroUtente, id);
+
+            btnPressed = false;
+
+        }else if(btnPressed == false){
+            alert("Hai già iniziato una partita");
+        }else{
+            alert("Scegli un livello di difficoltà!");
         }
-        
-        
-        
-         console.log("La posizione delle bombe è:" + bombe);
-        
-        
-        
-        // funzione che genera le celle in un contenitore specificato nell'argomento.
-        makePlayground(numeroUtente, id);
+
     }
 );
 
@@ -123,8 +146,7 @@ var numeriCliccati = [];
 
 
 
-// variabile che fa terminare la partita.
-var userIsPlaying = true;
+
 
 
 
