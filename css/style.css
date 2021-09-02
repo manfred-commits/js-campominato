@@ -13,8 +13,8 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 .square{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     background-color: green;
     border: 1px solid black;
 }
@@ -36,21 +36,29 @@ select{
 }
 /* /regole generali */
 
+/* sezione main container */
+.container-form{
+    display: flex;
+    padding: 50px;
+}
+
+
+
+
 
 /* sezione text container */
 
 .text-container{
-    margin: auto;
     width: 40%;
     display: flex;
     flex-wrap: wrap; 
-    justify-content: center;
+    align-content: flex-start;
     color: white;
     margin-bottom: 20px;
 }
 .text-container p{
-    padding: 10px;
     font-size: 18px;
+    padding:10px 0;
 }
 .text-container select{
     padding: 7px 30px;
@@ -59,14 +67,31 @@ select{
     text-align: center;
     margin-right: 10px;
 }
+
+
 /* /sezione text container */
 
+
+
+/* sezione container result */
+
+.container-result{
+    margin-top: 30px;
+}
+.container-result #result{
+    font-size: 30px;
+}
+
+/* /sezione container result */
 
 
 
 
 
 /* sezione game container */
+
+
+
 
 /* soluzione container con grid */
 /* #game-container{
@@ -85,8 +110,15 @@ select{
 #game-container{
     background-color: chocolate;
     margin: auto;
-    width: 1000px;
+    width: 500px;
     display: flex;
     flex-wrap: wrap;
 }
+
+
 /* /sezione game container */
+
+
+
+
+/* /sezione main container */
