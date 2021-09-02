@@ -105,10 +105,10 @@ document.getElementById("game-container").addEventListener("click",
             // 2.1 se la variabile di controllo, che verifica che il giocatore non è esploso e non ha ancora vinto, è vera:
 
 
-            if(!numeriCliccati.includes(event.target.innerHTML)){
+            if(!numeriCliccati.includes(clickUtente)){
                 //2.2 E se non è vero che il numero cliccato dall'utente è presente nella variabile numeriCliccati, (variabile che raccoglie, tutti i numeri cliccati dall'utente) 
 
-
+                
                 // 3.Fai diventare il blocco rosso.
 
                 event.target.classList.add("red");
