@@ -16,12 +16,17 @@
 
 
 // Qesta funzione genera un numero di celle pari ad un numero inserito dall'utente
-
 function makePlayground(num,id){
     for(var i = 1; i <= num; i++){
         document.getElementById(id).innerHTML+=`<div class="square">${i}</div>`;
     }
 
+}
+
+
+// Funzione che genera un numero random tra due intervalli
+function randomNumber(num1, num2){
+    return Math.floor(Math.random() * (num2 - num1 + 1) + num1);;
 }
 
 
@@ -34,21 +39,31 @@ function makePlayground(num,id){
 // SEZIONE CODICE PRINCIPALE
 
 // 1. Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
-//      I numeri non possono essere duplicati.
-//      Per il momento generiamo questi numeri a mano, per risolvere 
-//      la parte principale di logica con facilità:
-
-var bombe = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"];
+//      
 
 
 var numeroUtente = parseInt(prompt("Inserisci il numero di celle che devono formare il campo da gioco: "));
+
+var bombe = [];
+
+for(var i=0; i<16;i++){
+
+    bombe.push(randomNumber(1, numeroUtente));
+
+    //1.2 I numeri non possono essere duplicati.
+
+    
+}
+ console.log(bombe);
+
+
 
 // in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle
 var id ="game-container";
 
 
 makePlayground(numeroUtente, id);
-var clickUtente = "";
+var clickUtente = 0;
 var numeriCliccati = [];
 var userIsPlaying = true;
 
@@ -74,7 +89,7 @@ document.getElementById("game-container").addEventListener("click",
             
                 // 3.1 inserisci l'inner html del target selezionato, dentro la variabile, che si utilizzerà per il confronto.
 
-                clickUtente=(event.target.innerHTML);
+                clickUtente=parseInt(event.target.innerHTML);
 
 
                 //3.2 Aggiungi all'array, che contiene i numeri cliccati dall'utente, il numero cliccato.
