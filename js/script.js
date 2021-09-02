@@ -18,7 +18,7 @@
 // Qesta funzione genera un numero di celle pari ad un numero inserito dall'utente
 
 function makePlayground(num,id){
-    for(var i = 1; i < num+1; i++){
+    for(var i = 1; i <= num; i++){
         document.getElementById(id).innerHTML+=`<div class="square">${i}</div>`;
     }
 
@@ -41,7 +41,21 @@ function makePlayground(num,id){
 var bombe =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 
 
+var numeroUtente = parseInt(prompt("Inserisci il numero di celle che devono formare il campo da gioco: "));
 
+// in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle
+var id ="game-container";
+
+
+makePlayground(numeroUtente, id);
+
+
+document.getElementById("game-container").addEventListener("click",
+    function(event){
+        event.target.classList.toggle("red");
+        alert(event.target.innerHTML);
+    }
+);
 
 
 
