@@ -1,11 +1,11 @@
 // SEZIONE ENUNCIATO/CONSEGNA
 
 // Consegna
-// Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
-// I numeri non possono essere duplicati.
-// In seguito il giocatore clicca sulle celle numerate (non può cliccare più volte sulla stessa cella) OK
-// La partita termina quando il giocatore clicca su un numero “vietato” o clicca su tutte le celle che non sono delle bombe. OK
-// Al termine della partita il software deve comunicare il punteggio. OK
+// Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).   OK
+// I numeri non possono essere duplicati.   OK
+// In seguito il giocatore clicca sulle celle numerate (non può cliccare più volte sulla stessa cella)   OK
+// La partita termina quando il giocatore clicca su un numero “vietato” o clicca su tutte le celle che non sono delle bombe.   OK
+// Al termine della partita il software deve comunicare il punteggio.   OK
 
 // /SEZIONE ENUNCIATO/CONSEGNA
 
@@ -36,38 +36,64 @@ function randomNumber(num1, num2){
 
 
 
+
 // SEZIONE CODICE PRINCIPALE
 
 // 1. Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
-//      
+
+
+// in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle.
+var id ="game-container";
 
 
 var numeroUtente = parseInt(prompt("Inserisci il numero di celle che devono formare il campo da gioco: "));
 
+
 var bombe = [];
 
+
+//1.2 I numeri non possono essere duplicati.
 for(var i=0; i<16;i++){
 
-    bombe.push(randomNumber(1, numeroUtente));
-
-    //1.2 I numeri non possono essere duplicati.
-
+    var random = randomNumber(1, numeroUtente);
     
+
+    //    se il numero random, non è incluso nell'array, pusha il numero dentro l'array.
+
+    if(!bombe.includes(random)){
+
+        bombe.push(random);
+
+    }else{
+
+        i--;
+
+    }
+
+
 }
- console.log(bombe);
+
+
+ console.log("La posizione delle bombe è:" + bombe);
 
 
 
-// in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle
-var id ="game-container";
-
-
+// funzione che genera le celle in un contenitore specificato nell'argomento.
 makePlayground(numeroUtente, id);
+
+
+
+// variabile in cui viene temporaneamente messo il l'element target, dell'clickUtente.
 var clickUtente = 0;
+
+
+// array che immagazina i numeri che vengono cliccati dall'utente.
 var numeriCliccati = [];
+
+
+
+// variabile che fa terminare la partita.
 var userIsPlaying = true;
-
-
 
 
 
@@ -97,16 +123,10 @@ document.getElementById("game-container").addEventListener("click",
                 numeriCliccati.push(clickUtente);
 
                 
-                console.log(numeriCliccati);
-
-
-                console.log(clickUtente);
-                
                 //3.3 Verifica se il numero cliccato corrisponde ad una bomba o meno. E salva questo risultato in una variabile.
 
                 var esploso = bombe.includes(clickUtente);
 
-                console.log();
 
 
 
@@ -144,29 +164,6 @@ document.getElementById("game-container").addEventListener("click",
         }
     }
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById("game-container").addEventListener("click",
-//     function(event){
-//         event.target.classList.toggle("red");
-//         alert(event.target.innerHTML);
-//     }
-// );
 
 
 
