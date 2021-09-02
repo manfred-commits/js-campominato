@@ -14,8 +14,6 @@
 // con difficoltà 2 => tra 1 e 50
 
 
-
-
 // /SEZIONE ENUNCIATO/CONSEGNA
 
 
@@ -38,8 +36,20 @@ function randomNumber(num1, num2){
     return Math.floor(Math.random() * (num2 - num1 + 1) + num1);;
 }
 
+// Funzione che rimuove il contenuto di un tag html (di id specifico)
+function clearContent(elementID) {
+    document.getElementById(elementID).innerHTML = "";
+}
+
 
 // /SEZIONE FUNZIONI
+
+
+
+
+
+
+
 
 
 // SEZIONE CODICE PRINCIPALE
@@ -47,33 +57,48 @@ function randomNumber(num1, num2){
 
 
 
+// in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle.
+var id ="game-container";
+
 // inizializzo la variabile bombe, in questa posizione così da renderla una variabile globale
 var bombe = [];
 
 
-// variabile che fa terminare la partita.
+// variabile che fa terminare la partita
 var userIsPlaying = true;
 
 
 
-
-// 1. creo un evento click per il buttone play così da inizializzare il gioco.
+// 1. creo un evento click per il btn play ed il btn retry così da poter inizializzare il gioco e resettarlo, al termine.
 
 btnPlay = document.getElementById("play");
+btnRetry = document.getElementById("retry");
+
+
+// variabile di controllo che assicura che il btn play non venga premuto più volte durante una partita
 
 var btnPressed = true;
+
+
+
+
+
+
+// SEZIONE DI COSTRUZIONE DELLA SUPERFICIE DI GIOCO
+
 
 btnPlay.addEventListener("click",
 function(){
 
+
+        // variabile che corrisponde al tag select presente nell'HTML
         var selection=document.getElementById("difficulty").value;
         
 
 
         if(selection!="" && btnPressed){
             
-            // in questa variabile sarà inserito il nome dell'id, del contenitore in cui si vogliono generare le celle.
-            var id ="game-container";
+            
             
             // 1.2 verifico l'input utente sulla select per generare una griglia
     
@@ -126,13 +151,19 @@ function(){
             btnPressed = false;
 
         }else if(btnPressed == false){
-            alert("Hai già iniziato una partita");
+            alert("Hai già iniziato una partita. Se invece hai terminato, clicca su Riprova.");
         }else{
             alert("Scegli un livello di difficoltà!");
         }
 
     }
 );
+
+// /SEZIONE DI COSTRUZIONE DELLA SUPERFICIE DI GIOCO
+
+
+
+
 
 
 
@@ -149,6 +180,9 @@ var numeriCliccati = [];
 
 
 
+
+
+// SEZIONE DI GIOCO DEL CODICE
 
 
 document.getElementById("game-container").addEventListener("click",
@@ -219,6 +253,41 @@ document.getElementById("game-container").addEventListener("click",
         }
     }
 );
+
+// /SEZIONE DI GIOCO DEL CODICE
+
+
+
+
+
+
+
+
+// SEZIONE DI RESET DEL CODICE
+btnRetry.addEventListener("click",
+    function(){
+
+
+    bombe = [];
+
+    userIsPlaying = true;   
+
+    btnPressed = true; 
+
+    document.getElementById("difficulty").selectedIndex="0";
+
+    clickUtente = 0;
+
+    numeriCliccati = [];
+
+    clearContent("game-container");
+
+    }
+);
+
+// SEZIONE DI RESET DEL CODICE
+
+
 
 
 
