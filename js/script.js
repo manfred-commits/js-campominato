@@ -15,7 +15,7 @@
 // SEZIONE FUNZIONI
 
 
-// Qesta funzione genera un numero di celle pari ad un numero inserito dall'utente
+// Questa funzione genera un numero di celle pari ad un numero inserito dall'utente
 function makePlayground(num,id){
     for(var i = 1; i <= num; i++){
         document.getElementById(id).innerHTML+=`<div class="square">${i}</div>`;
