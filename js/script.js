@@ -38,7 +38,7 @@ function makePlayground(num,id){
 //      Per il momento generiamo questi numeri a mano, per risolvere 
 //      la parte principale di logica con facilità:
 
-var bombe =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+var bombe = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"];
 
 
 var numeroUtente = parseInt(prompt("Inserisci il numero di celle che devono formare il campo da gioco: "));
@@ -48,12 +48,20 @@ var id ="game-container";
 
 
 makePlayground(numeroUtente, id);
-
+var clickUtente = "";
 
 document.getElementById("game-container").addEventListener("click",
     function(event){
-        event.target.classList.toggle("red");
-        alert(event.target.innerHTML);
+        event.target.classList.add("red");
+        
+        clickUtente=(event.target.innerHTML);
+
+        console.log(clickUtente);
+
+        // verifica di base da dover implementare
+        alert(bombe.includes(clickUtente,0));
+        
+
     }
 );
 
