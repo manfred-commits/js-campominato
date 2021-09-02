@@ -49,18 +49,39 @@ var id ="game-container";
 
 makePlayground(numeroUtente, id);
 var clickUtente = "";
-
+var numeriCliccati = [];
 document.getElementById("game-container").addEventListener("click",
     function(event){
-        event.target.classList.add("red");
         
-        clickUtente=(event.target.innerHTML);
+        //2. Se non è vero che il numero cliccato dall'utente è presente nella variabile numeriCliccati, (variabile che raccoglie, tutti i numeri cliccati dall'utente) 
 
-        console.log(clickUtente);
+        if(!numeriCliccati.includes(event.target.innerHTML)){
 
-        // verifica di base da dover implementare
-        alert(bombe.includes(clickUtente,0));
+            // 3.Fai diventare il blocco rosso.
+
+            event.target.classList.add("red");
         
+            // 3.1 inserisci l'inner html del target selezionato, dentro la variabile, che si utilizzerà per il confronto.
+
+            clickUtente=(event.target.innerHTML);
+
+
+            //3.2 Aggiungi all'array, che contiene i numeri cliccati dall'utente, il numero cliccato.
+
+            numeriCliccati.push(clickUtente);
+
+            
+            console.log(numeriCliccati);
+
+
+            console.log(clickUtente);
+            
+            //3.3 Verifica se il numero cliccato corrisponde ad una bomba o meno.
+
+            console.log(bombe.includes(clickUtente));
+
+           
+        }
 
     }
 );
