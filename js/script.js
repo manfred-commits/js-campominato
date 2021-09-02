@@ -193,8 +193,8 @@ document.getElementById("game-container").addEventListener("click",
                         
                         // se il giocatore è esploso, comunicare che l'utente ha perso e il punteggio da lui ottenuto è x.
 
-                        console.log("Sei esploso!!");
-                        console.log("Il tuo punteggio è : " + numeriCliccati.length);
+                        alert("Sei esploso!!");
+                        alert("Il tuo punteggio è : " + numeriCliccati.length);
                         userIsPlaying = false;
 
                     }else if(numeriCliccati.length == (numeroUtente-16)){
@@ -202,7 +202,7 @@ document.getElementById("game-container").addEventListener("click",
 
                         // se il giocatore ha cliccato su un numero di celle, pari a [numeroUtente-16 (dove sedici sono le celle occupate dalle bombe)] senza far diventare bombe.includes(clickUtente) == true, allora l'utente ha vinto.
 
-                        console.log("Hai vinto!");
+                        alert("Hai vinto!");
                         userIsPlaying = false;
                         console.log(userIsPlaying);
 
