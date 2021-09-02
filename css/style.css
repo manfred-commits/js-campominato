@@ -10,6 +10,7 @@
 /* regole generali */
 body{
     background-color: brown;
+    font-family: 'Open Sans', sans-serif;
 }
 .square{
     width: 100px;
@@ -20,7 +21,50 @@ body{
 .red{
     background-color: red;
 }
+button{
+    font-size: 20px;
+    font-weight: 600;
+    color:#b91450;
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px;
+}
+select{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
 /* /regole generali */
+
+
+/* sezione text container */
+
+.text-container{
+    margin: auto;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    color: white;
+    margin-bottom: 20px;
+}
+.text-container p{
+    padding: 10px;
+    font-size: 18px;
+}
+.text-container select{
+    padding: 7px 30px;
+    border: 1px solid #b91450;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px;
+}
+/* /sezione text container */
+
+
+
+
+
 
 /* sezione game container */
 
