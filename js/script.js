@@ -253,7 +253,7 @@ document.getElementById("game-container").addEventListener("click",
                 alert("Non puoi selezionare una cella già cliccata");
             }
         }else{
-            alert("Il gioco e terminato!");
+            alert("Il gioco e terminato! Premi il pulsante \"Riprova\" per giocare di nuovo.");
         }
     }
 );
@@ -287,7 +287,7 @@ btnRetry.addEventListener("click",
     clearContent("game-container");
 
     clearContent("result");
-    
+
     clearContent("punteggio");
 
 
