@@ -120,7 +120,7 @@ function(){
             
             //1.3 Il computer deve generare 16 numeri casuali tra 1 e 100 (bombe).
             //1.4 I numeri non possono essere duplicati.
-            for(var i=0; i<16;i++){
+            while(bombe.length<16){
             
                 var random = randomNumber(1, numeroUtente);
                 
@@ -130,10 +130,6 @@ function(){
                 if(!bombe.includes(random)){
             
                     bombe.push(random);
-            
-                }else{
-            
-                    i--;
             
                 }
             
